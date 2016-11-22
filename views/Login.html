@@ -1,0 +1,26 @@
+<p class="text-info three">Placeholder</p>
+<div class="main-login">
+    <form class="login-form">
+        <!-- content login -->
+        <div class="content-login">
+            <p><input type="text" class="input-type" data-ng-model="username" placeholder="Username"></p>
+            <p>
+                <input type="text" class="input-type" data-ng-model="password" placeholder="Password" data-ng-hide="hideShowPassword">
+                <input type="password" class="input-type" data-ng-model="password" placeholder="Password" data-ng-show="hideShowPassword">
+                <span class="icon-page show" data-ng-click="hideShowPassword=!hideShowPassword"></span>
+            </p>
+            <a href="javascript:;" data-ng-click="login()" data-ng-class="{'error':errorLog}" class="button-login">Login</a>
+            <div><p class="pull-left"><input class="input-check" name="remember" id="remember" type="checkBox"><label for="remember" class="text-check"><i>Remember me</i></label></p><a href="javascript:;" class="pull-right text-forgot" data-ng-click="forgotPassword=!forgotPassword; errorLogin=false; username=''">Forgot Password?</a></div>
+        </div>
+        <!-- end content login -->
+    </form>
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border two">OR LOGIN WITH</legend>
+        <p class="item-share text-center">
+          <a href="javascript:;" class="icon-page icon-share icon-face"></a>
+          <a href="javascript:;" class="icon-page icon-share icon-tw"></a>
+          <a href="javascript:;" class="icon-page icon-share icon-gg"></a>
+        </p>
+    </fieldset>
+    <p class="text-help-acc">Don’t have an account? <a href="#SignUp">Sign Up</a></p>
+</div>

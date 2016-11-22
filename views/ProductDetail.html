@@ -1,0 +1,64 @@
+<section>
+  <header class="header-top">
+    <p class="text-header pull-left"><i class="icon-page icon-back" data-ng-click="goLink(4)"></i>Product Detail</p>
+    <p class="pull-right right-option">
+      <span class="icon-page icon-three-white" data-ng-click="contactSent=!contactSent"></span>
+    </p>
+  </header>
+  <article class="fix-header product-detail">
+    <div class="bind-detail">
+      <div class="col-xs-12 text-center no-padding">
+        <p class="pin-status-item" data-ng-class="{'not-yet':!bindItem.success}">
+          <span class="arrow-pin"></span>
+          <i class="icon-page icon-time-scan" data-ng-click="viewTool=!viewTool; $event.stopPropagation()"></i>
+        </p>
+        <a href="javascript:;" class="img-thumb detail" data-ng-click="goLink(11)">
+          <img src="#" data-ng-src="{{bindItem.img}}" alt="images product">
+        </a>
+      </div>
+      <div class="clearfix"></div>
+      <div class="box-detail">
+        <div class="row padd-bottom">
+          <div class="col-xs-9">
+            <p class="name-inven">{{bindItem.name}}<br><span>#{{bindItem.id}}</span></p>
+          </div>
+          <div class="col-xs-3 no-padding">
+            <span class="time-bind">{{bindItem.time}}</span>
+          </div>
+        </div>
+        <div class="row padd-bottom">
+          <div class="col-xs-3">
+            <p class="two-number-repeat fix-span text-left">STATUS <br><span data-ng-show="!bindItem.success">Not sync</span><span data-ng-hide="!bindItem.success">Successfully Sync</span></p>
+          </div>
+          <div class="col-xs-4">
+            <p class="two-number-repeat fix-span">SCAN FOR <br><span>Sold item</span></p>
+          </div>
+          <div class="col-xs-2">
+            <p class="two-number-repeat">Qty <br><span>{{bindItem.qty}}</span></p>
+          </div>
+          <div class="col-xs-3 fix-left-right">
+            <p class="two-number-repeat two">POINTS <br><span>{{bindItem.points}}</span></p>
+          </div>
+        </div>
+        <div class="row padd-bottom">
+            <div class="col-xs-12">
+              <p class="two-number-repeat fix-span text-left">DESCRIPTION <br><span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</span></p>
+            </div>        
+        </div>        
+        <div class="clearfix"></div>
+      </div>
+      <div class="btn-slide two text-center">
+        <a href="#WriteInquiry" class="btn-full color text-transform" data-ng-class="{'color-fix':errorSignUp}">Contact Agent for Inquiry</a>
+      </div>
+    </div>
+  </article>
+</section>
+<div class="pp-show" data-ng-show="contactSent">
+  <div class="pp-child two">
+    <p class="text-center"><span class="arrow-top fix-position"></span></p>
+    <div class="content-pp-child" data-ng-click="contactSent=false">
+        <p class="set-center-two" data-ng-click="soft=1; showSoft=false">Call Agent</p>
+        <p class="set-center-two" data-ng-click="soft=2; showSoft=false">Email Agent</p>
+    </div>
+  </div>
+</div>

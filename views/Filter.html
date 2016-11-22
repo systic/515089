@@ -1,0 +1,36 @@
+<section>
+  <header class="header-top">
+    <p class="text-header pull-left"><i class="icon-page icon-back" data-ng-click="goLink(4)"></i>Filter</p>
+    <div class="pull-right right-text-click">
+        <a href="javascript:;" class="text-click" data-ng-click="resetClick()">Reset</a>
+    </div>
+  </header>
+  <article class="article-sign-up">
+    <form>
+      <div class="form-sign-up">
+        <p class="row-input">
+          <span>Item type</span>
+          <input type="text" name="Retailer" value="Sold item" disabled>
+        </p>
+        <p class="row-input fix-height">
+          <span>Quantity range</span>
+          <input type="text" name="Quantity range" placeholder="Min" data-ng-model="rangeMin">
+          <input type="text" name="Quantity range max" placeholder="Max" data-ng-model="rangeMax">
+        </p>
+        <p class="row-input fix-height">
+          <span>Date range</span>
+          <input type="text" name="Date range" placeholder="From" data-ng-model="dateFrom">
+          <input type="text" name="Date range" placeholder="To" data-ng-model="dateTo">
+        </p>
+        <p class="row-input">
+          <span>Keywords</span>
+          <input type="text" name="Keywords" placeholder="Enter" data-ng-model="key">
+        </p>
+      </div>
+      <div class="clearfix"></div>
+      <div class="btn-slide three-fix-top text-center">
+        <a href="javascript:;" class="btn-full color text-transform" data-ng-click="goLink(4)">APPLY</a>
+      </div>
+    </form>
+  </article>
+</section>

@@ -1,0 +1,77 @@
+<div data-ng-hide="startSignUp">
+  <p class="text-info three">Placeholder</p>
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border">SIGN UP AS</legend>
+        <div class="btn-slide two text-center fix">
+            <a href="javascript:;" class="color btn-full text-transform" data-ng-click="signUp(1)">RETAILER</a>
+            <a href="javascript:;" class="color2 btn-full text-transform" data-ng-click="signUp(2)">AGENT</a>
+        </div>
+    </fieldset>
+</div>
+<section data-ng-show="startSignUp">
+  <header class="header-top">
+    <p class="text-header"><i class="icon-page icon-back" data-ng-click="startSignUp=false"></i>Sign Up</p>
+  </header>
+  <article class="article-sign-up">
+    <fieldset class="scheduler-border">
+        <legend class="scheduler-border two">AUTO FILL WITH</legend>
+        <p class="item-share text-center">
+          <a href="javascript:;" class="icon-page icon-share icon-face"></a>
+          <a href="javascript:;" class="icon-page icon-share icon-tw"></a>
+          <a href="javascript:;" class="icon-page icon-share icon-gg"></a>
+        </p>
+    </fieldset>
+    <form>
+      <div class="form-sign-up">
+        <p class="row-input">
+          <span>Sign up as</span>
+          <input type="text" name="Retailer" data-ng-model="typeSign" disabled>
+        </p>
+        <p class="row-input">
+          <span>Username 
+            <i data-ng-show="Username == 'janedoe' && errorSignUp">*not available</i>
+            <i data-ng-show="Username == null">{{empty}}</i>
+          </span>
+          <input type="text" name="User name" data-ng-class="{'error-text':Username == 'janedoe' && errorSignUp}" placeholder="Enter" data-ng-model="Username" data-ng-change="reloadSignUp()">
+        </p>
+        <p class="row-input">
+          <span>Password<i data-ng-show="Password == null">{{empty}}</i></span>
+          <input type="password" name="Password" placeholder="Enter" data-ng-model="Password" data-ng-change="reloadSignUp()">
+        </p>
+        <p class="row-input">
+          <span>Re-enter password<i data-ng-show="Repassword == null">{{empty}}</i></span>
+          <input type="password" name="Re password" placeholder="Enter" data-ng-model="Repassword" data-ng-change="reloadSignUp()">
+        </p>
+        <p class="row-input">
+          <span>Name of person<i data-ng-show="Nameofperson == null">{{empty}}</i></span>
+          <input type="text" name="Name of person" placeholder="Enter" data-ng-model="Nameofperson" data-ng-change="reloadSignUp()">
+        </p>
+        <p class="row-input">
+          <span>Retailer name<i data-ng-show="Retailername == null">{{empty}}</i></span>
+          <input type="text" name="Retailer name" placeholder="Enter" data-ng-model="Retailername" data-ng-change="reloadSignUp()">
+        </p>
+        <p class="row-input">
+          <span>Address<i data-ng-show="Address == null">{{empty}}</i></span>
+          <input type="text" name="Address" placeholder="Enter" data-ng-model="Address" data-ng-change="reloadSignUp()">
+        </p>
+        <p class="row-input">
+          <span>Retailer ID<i data-ng-show="RetailerID == null">{{empty}}</i></span>
+          <input type="text" name="Retailer ID" placeholder="Enter" data-ng-model="RetailerID" data-ng-change="reloadSignUp()">
+        </p>
+      </div>
+      <div class="btn-slide two text-center fix-btn-end">
+        <a href="javascript:;" class="btn-full color text-transform" data-ng-class="{'color-fix':errorSignUp}" data-ng-click="signUpCheck()">SIGN UP</a>
+      </div>
+    </form>
+  </article>
+</section>
+<div class="pp-wrappwer" data-ng-show="sucessSignUp">
+  <div class="pp-content text-center" data-center-screen>
+    <p class="pp-text">Sign Up Success!</p>
+    <span class="icon-page icon-success"></span>
+    <p class="pp-text">Your account has been created</p>
+    <div class="btn-slide two text-center">
+      <a href="#Login" class="btn-full color text-transform">ok</a>
+    </div>
+  </div>
+</div>

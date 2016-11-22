@@ -1,0 +1,71 @@
+<div class="step" data-ng-hide="counter===100">
+    <p class="text-info" data-center-screen>Placeholder</p>
+    <p class="progress-number">{{counter}}%<br>LOADING...</p>
+</div>
+<div class="step" data-ng-show="counter===100 && !appStart">
+    <p class="text-info two">Placeholder</p>
+    <ul rn-carousel rn-carousel-index="noteList" class="carousel-set">
+        <li>
+            <div class="content-set">
+                <p class="pie-color">
+                    <a href="javascript:;" class="img-set">
+                        <img src="i/img-phone.png" alt="images phone">
+                    </a>
+                </p>
+                <p class="clearfix"></p>
+                <p class="text-read-slide"><span>About this App</span><br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            </div>
+        </li>
+        <li>
+            <div class="content-set">
+                <p class="pie-color">
+                    <a href="javascript:;" class="img-set two">
+                        <img src="i/img-list.png" alt="images list">
+                    </a>
+                </p>
+                <p class="clearfix"></p>
+                <p class="text-read-slide"><span>Features & Benefits</span><br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            </div>
+        </li>
+        <li>
+            <div class="content-set">
+                <p class="pie-color">
+                    <a href="javascript:;" class="img-set three">
+                        <img src="i/img-done.png" alt="images done">
+                    </a>
+                </p>
+                <p class="clearfix"></p>
+                <p class="text-read-slide"><span>Results</span><br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            </div>
+        </li>
+    </ul>
+    <div class="rn-carousel-indicator custom-indicator text-center">
+        <span data-ng-class="{active: noteList===0}" data-ng-click="noteList=0"></span>
+        <span data-ng-class="{active: noteList===1}" data-ng-click="noteList=1"></span>
+        <span data-ng-class="{active: noteList===2}" data-ng-click="noteList=2"></span>
+    </div>
+    <div class="btn-slide text-center" data-ng-hide="noteList===2">
+        <a href="javascript:;" data-ng-click="appStart=true">Skip</a>
+        <a href="javascript:;" class="color" data-ng-show="noteList===0" data-ng-click="noteList=1">Next</a>
+        <a href="javascript:;" class="color" data-ng-show="noteList===1" data-ng-click="noteList=2">Next</a>
+    </div>
+    <div class="btn-slide text-center" data-ng-show="noteList===2">
+        <a href="javascript:;" class="color btn-full" data-ng-click="appStart=true">Get started</a>
+    </div>
+</div>
+<div class="step" data-ng-show="appStart">
+    <p class="text-info two">Placeholder</p>
+    <div class="carousel-set">
+        <div class="content-set">
+            <a href="javascript:;" class="img-set-avatar">
+                <img src="i/img-avatar1.jpg" alt="images phone">
+            </a>
+            <p class="clearfix"></p>
+            <p class="text-read-slide"><span>Welcome!</span><br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        </div>
+    </div>
+    <div class="btn-slide fix-top text-center">
+        <a href="#Login" class="color2 text-transform">LOGIN</a>
+        <a href="#SignUp" class="color text-transform">SIGN UP</a>
+    </div>
+</div>

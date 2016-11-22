@@ -1,0 +1,16 @@
+<div class="top-nav">
+	<p class="text-info-nav">Placeholder</p>
+    <a href="javascript:;" data-ng-hide="user===2" class="avar-nav"><img src="i/img-avatar.jpg" alt="avatar user"></a>
+    <a href="javascript:;" data-ng-hide="user===1" class="avar-nav"><img src="i/img-avatar-member.jpg" alt="avatar user"></a>
+    <p class="name-user" data-ng-hide="user===2">Jane Doe<br>Retailer Name<br><a href="javascript:;" data-ng-click="goLink(7)">Edit</a></p>
+    <p class="name-user" data-ng-hide="user===1">John Doe<br>id #123456789<br><a href="javascript:;" data-ng-click="goLink(7)">Edit</a></p>
+</div>
+<ul class="menu-push">
+    <li><a href="javascript:;" data-ng-click="goLink(2)"><span class="icon-page icon-nav icon-dash"></span>Dashboard</a></li>
+    <li><a href="javascript:;" data-ng-click="goLink(3)"><span class="icon-page icon-nav icon-noti"></span>Notifications</a><span>3</span></li>
+    <li data-ng-hide="user===2"><a href="javascript:;" data-ng-click="goLink(4)"><span class="icon-page icon-nav icon-my"></span>My Inventory</a></li>
+    <li data-ng-hide="user===2"><a href="javascript:;" data-ng-click="goLink(8)"><span class="icon-page icon-nav icon-scan-b"></span>Scan Barcode</a></li>
+    <li data-ng-hide="user===2"><a href="javascript:;" data-ng-click="goLink(10)"><span class="icon-page icon-nav icon-scan-a"></span>Scan Activity</a></li>
+    <li data-ng-hide="user===1"><a href="javascript:;" data-ng-click="goLink(13)"><span class="icon-page icon-nav icon-my-r"></span>My Retailers</a></li>
+</ul>
+<a href="javascript:;" class="text-logout" data-ng-click="goLink(1)"><span class="icon-page icon-nav icon-power"></span>Logout</a>

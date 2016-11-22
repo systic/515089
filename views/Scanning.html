@@ -1,0 +1,47 @@
+<section>
+  <header class="header-top">
+    <p class="text-header pull-left"><i class="icon-page icon-back" data-ng-click="goLink(4)"></i>Barcode Scanning</p>
+    <p class="pull-right right-option">
+        <a href="javascript:;" class="icon-page icon-edit-scan" data-ng-click="editCode=true; scaningError=false; scaningSuccess=false" data-ng-hide="editCode"></a>
+        <a href="javascript:;" class="icon-page icon-scan two" data-ng-click="editCode=false" data-ng-show="editCode"></a>
+        <a href="javascript:;" class="icon-page icon-time-scan"  data-ng-click="goLink(10)"></a>
+    </p>
+  </header>
+  <article class="ct-scaning" data-ng-class="{'edit-code':editCode}">
+    <div class="box-tabs item-tab" data-ng-init="viewTab=2">
+      <a href="javascript:;" data-ng-class="{'active':viewTab===1}" data-ng-click="viewTab=1">Incoming</a>
+      <a href="javascript:;" data-ng-class="{'active':viewTab===2}" data-ng-click="viewTab=2">Sold</a>
+    </div>
+    <div data-ng-hide="editCode">
+      <div data-ng-hide="scaningError">
+        <div class="content-scaning">
+          <p class="note-scan-success" data-ng-show="scaningSuccess"><span class="icon-page icon-sc-child"></span>Scanning Success!</p>
+          <div class="img-scan">
+            <img src="i/img-scan.png" alt="images scan">
+          </div>
+        </div>
+        <p class="text-center note-scan">Scan the product barcode or QR</p>
+        <p class="pp-box-help" data-ng-show="scaning">
+          <a href="javascript:;" data-ng-click="scaningSuccess=true; scaning=false">Scanning Success</a>
+          <a href="javascript:;" data-ng-click="scaningError=true; scaning=false">Scanning Error</a>
+        </p>
+        <p class="text-center"><a href="javascript:;" class="btn-scaner" data-ng-click="scaning=!scaning"><span class="icon-page icon-scan"></span></a></p>
+      </div>
+      <div data-ng-show="scaningError">
+        <div class="content-scaning">
+          <div class="img-scan">
+            <img src="i/img-scan-error.png" alt="images scan">
+          </div>
+        </div>
+        <p class="text-center note-scan error">Product not found in system. Please contact your Agent.</p>
+        <p class="two-btn-scan">
+          <a href="javascript:;" data-ng-click="scaningError=false">SCAN ANOTHER</a>
+          <a href="javascript:;" class="color">CONTACT AGENT</a>
+        </p>
+      </div>
+    </div>
+    <div data-ng-show="editCode">
+      <input type="text" placeholder="Enter the product barcode number" name="edit code" class="input-text-center">
+    </div>
+  </article>
+</section>

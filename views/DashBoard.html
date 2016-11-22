@@ -1,0 +1,459 @@
+<header class="header-top" data-ng-class="{'content-push':showNav}">
+    <p class="text-header pull-left"><i class="icon-page icon-push" data-ng-click="pushMenu()"></i>Dashboard</p>
+    <p class="pull-right right-option" data-ng-hide="showMove">
+        <a href="javascript:;" class="icon-page icon-note" data-ng-click="goLink(3)"><span>{{note}}</span></a>
+        <a href="javascript:;" class="icon-page icon-export" data-ng-hide="user===1" data-ng-click="showSoft=!showSoft"></a>
+        <a href="javascript:;" class="icon-page icon-setting" data-ng-click="moveClick(); showSoft=false"></a>
+    </p>
+    <div class="pull-right right-text-click" data-ng-show="showMove">
+        <a href="javascript:;" class="text-click" data-ng-click="addViewPP=!addViewPP">+Add</a>
+        <a href="javascript:;" class="text-click" data-ng-click="doneClick()">Done</a>
+    </div>
+</header>
+<article class="fix-header dashboard-content">
+    <div data-sv-root data-sv-part="listDashBoard" class="list-drag" data-ng-hide="user===2">
+        <div data-ng-repeat="items in listDashBoard" data-ng-show="items.show && !complete" class="item-sv" data-sv-element>
+            <div class="box-content" data-ng-show="items.id===1">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> MY PROFILE
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}">
+                        <a href="#EditProfile" class="edit-box" data-ng-hide="showMove">Edit</a>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn{{$index}}" id="cpn{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT">
+                    <div class="three-col">
+                        <p class="text-number"><span>STOCK</span><br> 450</p>
+                    </div>
+                    <div class="three-col">
+                        <a href="javascript:;" class="avatar-profile">
+                            <img src="i/img-avatar.jpg" alt="images user">
+                            <span class="icon-page icon-gold"></span>
+                        </a>
+                    </div>
+                    <div class="three-col">
+                        <p class="text-number"><span>SOLD</span><br> 245</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="text-name"><a href="javascript:;">Jane Doe</a><br>Retailer Name</p>
+                    <p class="text-center">
+                        <a class="point" href="javascript:;"><span>POINTS</span> 25,000</a>
+                        <span class="icon-page icon-option-point"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="box-content" data-ng-show="items.id===2">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> MY AGENT
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}">
+                        <p data-ng-hide="showMove">
+                            <span class="icon-page icon-three-pie"></span>
+                        </p>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn1{{$index}}" id="cpn1{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn1{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT">
+                    <div class="two-col">
+                        <a href="javascript:;" class="avatar-member">
+                            <img src="i/img-avatar-member.jpg" alt="avatar member">
+                        </a>
+                        <p class="pull-left text-right-member">
+                            <a href="javascript:;">John Doe</a><br>Available
+                        </p>
+                    </div>
+                    <div class="two-col text-center">
+                        <a href="javascript:;" class="icon-page icon-ct icon-ms"></a>
+                        <a href="javascript:;" class="icon-page icon-ct icon-call"></a>
+                        <a href="javascript:;" class="icon-page icon-ct icon-cmt"></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="box-content" data-ng-show="items.id===3">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT; chartType=false">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> STATISTICS
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}" data-ng-init="viewChart='Points'">
+                        <p data-ng-hide="showMove" data-ng-click="chartType=!chartType; invenText=false">
+                            {{viewChart}}
+                            <span class="icon-page icon-arrow-bottom" data-ng-class="{'rotate':chartType && !viewCT}"></span>
+                        </p>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn2{{$index}}" id="cpn2{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn2{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT" data-ng-init="view='week'">
+                    <div class="box-chart" data-ng-show="viewChart==='Points'">
+                        <canvas class="chart" data-draw-chart="" data-chart-label="items.labelChartWeek" data-chart-value="items.dataChartWeek" data-ng-show="view==='week'"></canvas>
+                        <canvas class="chart" data-draw-chart="" data-chart-label="items.labelChart" data-chart-value="items.dataChart" data-ng-show="view==='month'"></canvas>
+                        <div class="set-hr"><div class="set-line"></div></div>
+                    </div>
+                    <div class="box-chart" data-ng-show="viewChart==='Sold quantity'">
+                        <canvas class="chart" data-draw-chart-two="" data-chart-label="items.labelChartWeek" data-chart-value="items.dataChartWeek" data-ng-show="view==='week'"></canvas>
+                        <canvas class="chart" data-draw-chart-two="" data-chart-label="items.labelChart" data-chart-value="items.dataChart" data-ng-show="view==='month'"></canvas>
+                        <div class="set-hr"><div class="set-line"></div></div>
+                    </div>
+                    <div>
+                        <p class="col-xs-6 text-month-week"><span data-ng-hide="view==='month'">September 8, </span>2016</p>
+                        <p class="col-xs-6 view-chart">
+                            <span data-ng-class="{'active':view==='week'}" data-ng-click="view='week'">Weekly</span>
+                            <i>.</i>   
+                            <span data-ng-class="{'active':view==='month'}" data-ng-click="view='month'">Monthly</span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div  class="clearfix"></div>
+                <div class="pp-item-set fix box-height" data-ng-show="chartType && !showMove && !viewCT" data-ng-click="chartType=false">
+                    <p class="right-option-item option">
+                        <a href="javascript:;" data-ng-class="{'active':viewChart==='Points'}" data-ng-click="viewChart='Points'">Points</a>
+                        <a href="javascript:;" data-ng-class="{'active':viewChart==='Sold quantity'}" data-ng-click="viewChart='Sold quantity'">Sold quantity</a>
+                    </p>
+                </div>
+            </div>
+            <div class="box-content" data-ng-show="items.id===4">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT; invenText=false">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> RECENT INVENTORY
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}">
+                        <p data-ng-hide="showMove" data-ng-click="invenText=!invenText; chartType=false" data-ng-init="viewInven='Sold'">
+                            {{viewInven}} item
+                            <span class="icon-page icon-arrow-bottom" data-ng-class="{'rotate':invenText && !viewCT}"></span>
+                        </p>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn3{{$index}}" id="cpn3{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn3{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT">
+                    <div class="item-inventory" data-ng-class="{'last-child':$last}" data-ng-repeat="item in items.listChild">
+                        <div class="col-xs-7">
+                            <p class="name-inven" data-ng-click="goLink(11); viewDetail(item)">{{item.name}}<br><span>#{{item.id}}</span></p>
+                        </div>
+                        <div class="col-xs-2">
+                            <p class="two-number-repeat" data-ng-show="viewInven==='Sold'">SOLD <br><span>{{item.sold}}</span></p>
+                            <p class="two-number-repeat" data-ng-show="viewInven==='Stock'">Stock <br><span>{{item.stock}}</span></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p class="two-number-repeat two">POINTS <br><span>{{item.points}}</span></p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="text-center">
+                        <a href="#MyInventory" class="view-all">All inventory</a>
+                    </p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="pp-item-set fix box-height fix-two" data-ng-show="invenText && !viewCT" data-ng-click="invenText=false">
+                    <p class="right-option-item option">
+                        <a href="javascript:;" data-ng-class="{'active':viewInven==='Sold'}" data-ng-click="viewInven='Sold'">Sold item</a>
+                        <a href="javascript:;" data-ng-class="{'active':viewInven==='Stock'}" data-ng-click="viewInven='Stock'">Stock item</a>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div data-sv-root data-sv-part="listDashBoard2" class="list-drag" data-ng-hide="user===1">
+        <div data-ng-repeat="items in listDashBoard2" data-ng-show="items.show && !complete" class="item-sv" data-sv-element>
+            <div class="box-content" data-ng-show="items.id===1">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> MY PROFILE
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}">
+                        <a href="#EditProfile" class="edit-box" data-ng-hide="showMove">Edit</a>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn4{{$index}}" id="cpn4{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn4{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT">
+                    <div class="three-col">
+                        <p class="text-number"><span>RETAILER</span><br> 40</p>
+                    </div>
+                    <div class="three-col">
+                        <a href="javascript:;" class="avatar-profile">
+                            <img src="i/img-avatar-member.jpg" alt="images user">
+                        </a>
+                    </div>
+                    <div class="three-col">
+                        <p class="text-number"><span>SOLD</span><br> 999</p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="text-center">
+                        <div class="col-xs-3"><span class="icon-page icon-rank-group icon-group" data-ng-click="goLink(13)"></span></div>
+                        <div class="col-xs-6">
+                            <p class="text-name"><a href="javascript:;">John Doe</a><br>ID #123456789</p>
+                        </div>
+                        <div class="col-xs-3"><span class="icon-page icon-rank-group icon-rank" data-ng-click="goLink(16)"></span></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="box-content" data-ng-show="items.id===2">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT; chartType=false">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> SALLING STATISTICS
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}" data-ng-init="viewChart='Points'">
+                        <p data-ng-hide="showMove" data-ng-click="chartType=!chartType">
+                            {{viewChart}}
+                            <span class="icon-page icon-arrow-bottom" data-ng-class="{'rotate':chartType && !viewCT}"></span>
+                        </p>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn5{{$index}}" id="cpn5{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn5{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT" data-ng-init="view='week'">
+                    <div class="box-chart" data-ng-show="viewChart==='Points'">
+                        <canvas class="chart" data-draw-chart="" data-chart-label="items.labelChartWeek" data-chart-value="items.dataChartWeek" data-ng-show="view==='week'"></canvas>
+                        <canvas class="chart" data-draw-chart="" data-chart-label="items.labelChart" data-chart-value="items.dataChart" data-ng-show="view==='month'"></canvas>
+                        <div class="set-hr"><div class="set-line"></div></div>
+                    </div>
+                    <div class="box-chart" data-ng-show="viewChart==='Sold quantity'">
+                        <canvas class="chart" data-draw-chart-two="" data-chart-label="items.labelChartWeek" data-chart-value="items.dataChartWeek" data-ng-show="view==='week'"></canvas>
+                        <canvas class="chart" data-draw-chart-two="" data-chart-label="items.labelChart" data-chart-value="items.dataChart" data-ng-show="view==='month'"></canvas>
+                        <div class="set-hr"><div class="set-line"></div></div>
+                    </div>
+                    <div>
+                        <p class="col-xs-6 text-month-week"><span data-ng-hide="view==='month'">September 8, </span>2016</p>
+                        <p class="col-xs-6 view-chart">
+                            <span data-ng-class="{'active':view==='week'}" data-ng-click="view='week'">Weekly</span>
+                            <i>.</i>   
+                            <span data-ng-class="{'active':view==='month'}" data-ng-click="view='month'">Monthly</span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div  class="clearfix"></div>
+                <div class="pp-item-set fix box-height" data-ng-show="chartType && !showMove && !viewCT" data-ng-click="chartType=false">
+                    <p class="right-option-item option">
+                        <a href="javascript:;" data-ng-class="{'active':viewChart==='Points'}" data-ng-click="viewChart='Points'">Points</a>
+                        <a href="javascript:;" data-ng-class="{'active':viewChart==='Sold quantity'}" data-ng-click="viewChart='Sold quantity'">Sold quantity</a>
+                    </p>
+                </div>
+            </div>
+            <div class="box-content" data-ng-show="items.id===3">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT; softINQ=false">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> RECENT INQUIRIES
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}">
+                        <p data-ng-hide="showMove" data-ng-click="softINQ=!softINQ" data-ng-init="INQ='time'">
+                            Sort by {{INQ}}
+                            <span class="icon-page icon-arrow-bottom" data-ng-class="{'rotate':softINQ && !viewCT}"></span>
+                        </p>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn6{{$index}}" id="cpn6{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn6{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT">
+                    <div class="item-inventory" data-ng-class="{'last-child':$last}" data-ng-repeat="item in items.listChild">
+                        <div class="col-xs-10">
+                            <p class="name-inven" data-ng-click="goLink(15); viewDetail(item)">{{item.title}}<br><span>By {{item.user}} . Retailer Name</span></p>
+                        </div>
+                        <div class="col-xs-2">
+                            <span class="icon-page icon-three-pie fix fix-two"></span>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="text-center">
+                        <a href="javascript:;" class="view-all" data-ng-click="goLink(3)">All inquiries</a>
+                    </p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="pp-item-set fix box-height fix-two" data-ng-show="softINQ && !showMove && !viewCT" data-ng-click="softINQ=false">
+                    <p class="right-option-item option">
+                        <a href="javascript:;" data-ng-class="{'active':INQ==='time'}" data-ng-click="INQ='time'; softINQ=false">Sort by time</a>
+                        <a href="javascript:;" data-ng-class="{'active':INQ==='name'}" data-ng-click="INQ='name'; softINQ=false">Sort by name</a>
+                    </p>
+                </div>
+            </div>
+            <div class="box-content" data-ng-show="items.id===4">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT; myRet=false">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> MY RETAILERS
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}">
+                        <p data-ng-hide="showMove" data-ng-click="myRet=!myRet" data-ng-init="softRET='name'">
+                            Sort by {{softRET}}
+                            <span class="icon-page icon-arrow-bottom" data-ng-class="{'rotate':myRet && !viewCT}"></span>
+                        </p>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn7{{$index}}" id="cpn7{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn7{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT">
+                    <div class="item-inventory" data-ng-class="{'last-child':$last}" data-ng-repeat="item in items.listChild">
+                        <div class="col-xs-7">
+                            <a href="javascript:;" class="avatar-member" data-ng-click="viewDetailUser(item); goLink(14)">
+                                <img src="#" data-ng-src="{{item.avatar}}" alt="avatar member">
+                            </a>
+                            <p class="pull-left text-right-member">
+                                <a href="javascript:;" data-ng-click="viewDetailUser(item); goLink(14)">{{item.user}}</a><br>Retail Name
+                            </p>
+                        </div>
+                        <div class="col-xs-2">
+                            <p class="two-number-repeat">SOLD <br><span>{{item.sold}}</span></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p class="two-number-repeat two small-text">POINTS <br><span>{{item.points | currency:"":0}}</span></p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="text-center">
+                        <a href="#MyRetailers" class="view-all">All Retailers</a>
+                    </p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="pp-item-set fix box-height fix-two" data-ng-show="myRet && !showMove && !viewCT" data-ng-click="myRet=false">
+                    <p class="right-option-item option">
+                        <a href="javascript:;" data-ng-class="{'active':softRET==='name'}" data-ng-click="softRET='name'">Sort by name</a>
+                        <a href="javascript:;" data-ng-class="{'active':softRET==='sold'}" data-ng-click="softRET='sold'">Sort by sold</a>
+                    </p>
+                </div>
+            </div>
+            <div class="box-content" data-ng-show="items.id===5">
+                <div class="top-box">
+                    <p class="toggle-box pull-left" data-ng-click="viewCT=!viewCT; ppDate=false">
+                        <span data-ng-hide="viewCT">-</span>
+                        <span data-ng-show="viewCT">+</span> LEADERBOARD
+                    </p>
+                    <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}">
+                        <p data-ng-hide="showMove" data-ng-click="ppDate=!ppDate" data-ng-init="viewDate='week'">
+                            This {{viewDate}}
+                            <span class="icon-page icon-arrow-bottom" data-ng-class="{'rotate':ppDate && !viewCT}"></span>
+                        </p>
+                        <p data-ng-show="showMove">
+                            <input type="checkbox" class="switch" name="cpn8{{$index}}" id="cpn8{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                            <label for="cpn8{{$index}}"></label>
+                            <span data-sv-handle class="icon-page icon-move"></span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-show-more" data-ng-hide="viewCT">
+                    <div class="item-inventory" data-ng-class="{'last-child':$last}" data-ng-repeat="item in items.listChild">
+                        <div class="col-xs-7">
+                            <p class="pull-left text-top-level">
+                                {{$index+1}}
+                                <span>{{item.rank}}</span>
+                            </p>
+                            <a href="javascript:;" class="avatar-member" data-ng-click="viewDetailUser(item); goLink(14)">
+                                <img src="#" data-ng-src="{{item.avatar}}" alt="avatar member">
+                            </a>
+                            <p class="pull-left text-right-member">
+                                <a href="javascript:;" data-ng-click="viewDetailUser(item); goLink(14)">{{item.user}}</a><br>Retail Name
+                            </p>
+                        </div>
+                        <div class="col-xs-2">
+                            <p class="two-number-repeat">SOLD <br><span>{{item.sold}}</span></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p class="two-number-repeat two small-text">POINTS <br><span>{{item.points | currency:"":0}}</span></p>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="text-center">
+                        <a href="javascript:;" data-ng-click="goLink(16)" class="view-all">All leaderboard</a>
+                    </p>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="pp-item-set fix box-height fix-two" data-ng-show="ppDate && !showMove && !viewCT" data-ng-click="ppDate=false">
+                    <p class="right-option-item option">
+                        <a href="javascript:;" data-ng-class="{'active':viewDate==='week'}" data-ng-click="viewDate='week'">This week</a>
+                        <a href="javascript:;" data-ng-class="{'active':viewDate==='month'}" data-ng-click="viewDate='month'">This month</a>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</article>
+<div class="pp-show" data-ng-show="addViewPP && showMove">
+    <div class="pp-child" data-ng-show="addViewPP">
+        <p class="text-center"><span class="arrow-top"></span></p>
+        <div class="content-pp-child" data-ng-hide="user===2">
+            <div data-ng-repeat="items in listDashBoard" class="pp-set-view" data-ng-class="{'last':$last}">
+                <label class="set-center" for="cpn10{{$index}}" data-ng-class="{'color':items.show}">
+                    <span>{{items.setView}}</span>
+                </label>
+                <i class="icon-page icon-select-view" data-ng-show="items.show"></i>
+                <input type="checkbox" class="input-set-view" name="cpn10{{$index}}" id="cpn10{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                <label></label>
+            </div>
+        </div>
+        <div class="content-pp-child" data-ng-hide="user===1">
+            <div data-ng-repeat="items in listDashBoard2" class="pp-set-view" data-ng-class="{'last':$last}">
+                <label class="set-center" for="cpn9{{$index}}" data-ng-class="{'color':items.show}">
+                    <span>{{items.setView}}</span>
+                </label>
+                <i class="icon-page icon-select-view" data-ng-show="items.show"></i>
+                <input type="checkbox" class="input-set-view" name="cpn9{{$index}}" id="cpn9{{$index}}" data-ng-model="items.show" data-ng-checked="items.show">
+                <label></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pp-show" data-ng-show="showSoft" data-ng-click="showSoft=false">
+  <div class="pp-child two">
+    <p class="text-center"><span class="arrow-top"></span></p>
+    <div class="content-pp-child">
+        <p class="set-center-two" data-ng-click="soft=1" data-ng-class="{'color':soft===1}">to Pdf file</p>
+        <p class="set-center-two" data-ng-click="soft=2" data-ng-class="{'color':soft===2}">to Excel</p>
+        <p class="set-center-two" data-ng-click="soft=3" data-ng-class="{'color':soft===3}">to Word</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<section>
+  <header class="header-top">
+    <p class="text-header pull-left"><i class="icon-page icon-back" data-ng-click="goLink(3)"></i>Inquiry Detail</p>
+    <p class="pull-right right-option">
+      <span class="icon-page icon-three-white" data-ng-click="contactSent=!contactSent"></span>
+    </p>
+  </header>
+  <article class="fix-header">
+    <div class="box-pad-color">
+      <div class="item-inventory fix-height" data-ng-click="viewTool=false">
+        <div class="col-xs-4">
+          <a href="javascript:;" class="img-thumb">
+            <img src="#" data-ng-src="{{bindItem.img}}" alt="images product">
+          </a>
+        </div>
+        <div class="col-xs-8 no-padding">
+          <div class="col-xs-12 no-padding">
+            <p class="name-inven">{{bindItem.name}}<br><span>#{{bindItem.id}}</span></p>
+          </div>
+          <div class="col-xs-12 no-padding">
+            <div class="col-xs-1 no-padding text-left" data-ng-hide="viewTab===3">
+                <p class="two-number-repeat fix-left new">QTY <br><span>{{bindItem.qty}}</span></p>
+            </div>
+            <div class="col-xs-5">
+                <p class="two-number-repeat two">POINTS <br><span>{{bindItem.points | currency:"":0}}</span></p>
+            </div>
+            <div class="col-xs-6 text-left">
+                <p class="two-number-repeat fix-span text-left">SCAN ON <br><span>{{bindItem.time}}</span></p>
+            </div>
+          </div>      
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <div class="box-input-feedback">
+      <div class="top-to-sent">
+        <p class="pull-left text-list-mail">To</p>
+        <a href="javascript:;" class="avatar-member">
+            <img src="i/img-avatar.jpg" alt="avatar member">
+        </a>
+        <p class="pull-left text-right-member">
+            <a href="javascript:;">Jane Doe</a><br>Retail Name
+        </p>
+      </div>
+      <p class="row-input">
+        <span>Title<i data-ng-show="titleMail === null">{{empty}}</i></span>
+        <input type="text" name="Title" placeholder="Enter" value="Can’t sync my sold product">
+      </p>
+      <div class="text-area-box">
+        <p class="text-list-mail">Messages</p>
+        <textarea placeholder="Enter">Hi John, can you please check my point of Lorem Ipsum Produk #123456789 in the system? because until now this item didn’t sync yet even i already connect to the internet connection. Thanks
+Regards, Jane Doe
+        </textarea>
+      </div>
+    </div>
+    <p class="two-btn-scan">
+      <a href="javascript:;">REPLY</a>
+      <a href="javascript:;" class="color" data-ng-click="succesSubmit=true">SOLVED</a>
+    </p>
+  </article>
+</section>
+<div class="pp-show" data-ng-show="contactSent">
+  <div class="pp-child two">
+    <p class="text-center"><span class="arrow-top fix-position"></span></p>
+    <div class="content-pp-child" data-ng-click="contactSent=false">
+        <p class="set-center-two" data-ng-click="soft=1; showSoft=false">Call Agent</p>
+        <p class="set-center-two" data-ng-click="soft=2; showSoft=false">Email Agent</p>
+    </div>
+  </div>
+</div>
+<div class="pp-wrappwer" data-ng-show="succesSubmit">
+  <div class="pp-content text-center" data-center-screen>
+    <p class="pp-text">Inquiry Submitted!</p>
+    <span class="icon-page icon-success"></span>
+    <p class="pp-text">Your inquiry has sent to Agent</p>
+    <div class="btn-slide two text-center">
+      <a href="javascript:;" data-ng-click="goLink(3)" class="btn-full color text-transform">ok</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<header class="header-top" data-ng-class="{'content-push':showNav}">
+    <p class="text-header pull-left">
+      <i class="icon-page icon-back" data-ng-click="goLink(2)"></i>Leaderbooard</p>
+    <div class="pull-right right-option">
+      <a href="javascript:;" class="icon-page icon-export two" data-ng-click="showSoft=!showSoft"></a>
+    </div>
+</header>
+<article class="ct-scaning color fix">
+  <div class="box-tabs item-tab" data-ng-init="viewTab=1">
+    <a href="javascript:;" data-ng-class="{'active':viewTab===1}" data-ng-click="viewTab=1">Weekly</a>
+    <a href="javascript:;" data-ng-class="{'active':viewTab===2}" data-ng-click="viewTab=2">Monthly</a>
+  </div>
+  <div class="item-inventory fix-leader" data-ng-show="viewTab===1" data-ng-class="{'last-child':$last}" data-ng-repeat="item in MyRetailers.listData" data-ng-click="viewDetailUser(item); goLink(14)">
+      <div class="col-xs-7">
+          <p class="pull-left text-top-level">
+              {{$index+1}}
+              <span>{{item.rank}}</span>
+          </p>
+          <a href="javascript:;" class="avatar-member fix-rank">
+              <img src="#" data-ng-src="{{item.avatar}}" alt="avatar member">
+              <span class="icon-page icon-gold one" data-ng-show="item.rank==='st'"></span>
+              <span class="icon-page icon-gold two" data-ng-show="item.rank==='nd'"></span>
+              <span class="icon-page icon-gold three" data-ng-show="item.rank==='rd'"></span>
+          </a>
+          <p class="pull-left text-right-member">
+              <a href="javascript:;">{{item.user}}</a><br>Retail Name
+          </p>
+      </div>
+      <div class="col-xs-2">
+          <p class="two-number-repeat">SOLD <br><span>{{item.sold}}</span></p>
+      </div>
+      <div class="col-xs-3">
+          <p class="two-number-repeat two small-text">POINTS <br><span>{{item.points | currency:"":0}}</span></p>
+      </div>
+  </div>
+  <div class="item-inventory fix-leader" data-ng-show="viewTab===2" data-ng-class="{'last-child':$last}" data-ng-repeat="item in MyRetailers.listData2" data-ng-click="viewDetailUser(item); goLink(14)">
+      <div class="col-xs-7">
+          <p class="pull-left text-top-level">
+              {{$index+1}}
+              <span>{{item.rank}}</span>
+          </p>
+          <a href="javascript:;" class="avatar-member fix-rank">
+              <img src="#" data-ng-src="{{item.avatar}}" alt="avatar member">
+              <span class="icon-page icon-gold one" data-ng-show="item.rank==='st'"></span>
+              <span class="icon-page icon-gold two" data-ng-show="item.rank==='nd'"></span>
+              <span class="icon-page icon-gold three" data-ng-show="item.rank==='rd'"></span>
+          </a>
+          <p class="pull-left text-right-member">
+              <a href="javascript:;">{{item.user}}</a><br>Retail Name
+          </p>
+      </div>
+      <div class="col-xs-2">
+          <p class="two-number-repeat">SOLD <br><span>{{item.sold}}</span></p>
+      </div>
+      <div class="col-xs-3">
+          <p class="two-number-repeat two small-text">POINTS <br><span>{{item.points | currency:"":0}}</span></p>
+      </div>
+  </div>
+</article>
+<div class="pp-show" data-ng-show="showSoft" data-ng-click="showSoft=false">
+  <div class="pp-child two">
+    <p class="text-center"><span class="arrow-top fix-position"></span></p>
+    <div class="content-pp-child">
+        <p class="set-center-two" data-ng-click="soft=1" data-ng-class="{'color':soft===1}">to Pdf file</p>
+        <p class="set-center-two" data-ng-click="soft=2" data-ng-class="{'color':soft===2}">to Excel</p>
+        <p class="set-center-two" data-ng-click="soft=3" data-ng-class="{'color':soft===3}">to Word</p>
+    </div>
+  </div>
+</div>

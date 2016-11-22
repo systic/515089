@@ -1,0 +1,66 @@
+<header class="header-top" data-ng-class="{'content-push':showNav}">
+    <p class="text-header pull-left"><i class="icon-page icon-push" data-ng-click="pushMenu()"></i>Notifications</p>
+    <p class="pull-right right-option">
+      <a href="javascript:;" class="icon-page icon-setting"></a>
+    </p>
+</header>
+<article class="ct-scaning color fix" data-ng-class="{'fix-swipe':showTime}">
+  <div class="box-tabs item-tab" data-ng-init="viewTab=1">
+    <a href="javascript:;" data-ng-class="{'active':viewTab===1}" data-ng-click="viewTab=1">All</a>
+    <a href="javascript:;" data-ng-class="{'active':viewTab===2}" data-ng-click="viewTab=2">Inquiry</a>
+  </div>
+  <div class="content-products" data-ng-show="viewTab===1">
+    <div class="item-inventory fix-height note" data-ng-class="{'last-child':$last}" data-ng-repeat="item in Notifications.listData">
+        <div class="col-xs-12">
+          <p class="pin-status-item" data-ng-hide="!item.success || appllyNote">
+            <span class="arrow-pin"></span>
+            <i class="icon-page icon-time-scan" data-ng-click="viewTool=!viewTool; $event.stopPropagation()"></i>
+            <a href="javascript:;" class="text-tooltip" data-ng-show="viewTool">
+              <span data-ng-hide="item.success">Not sync yet</span>
+              <span data-ng-hide="!item.success">Successfully Sync</span>
+            </a>
+          </p>
+          <p class="name-inven" data-ng-click="goLink(15); viewDetail(item)">{{item.name}} <span class="news" data-ng-show="item.news">new</span><br>
+            <span class="icon-page icon-three-pie" data-ng-click="option=!option; $event.stopPropagation()"></span>
+            <span>By {{item.user}} .  Retailer Name</span><br>
+            <span data-read-more data-ng-model="item.textInquiry" data-words="true" data-length="14"></span>
+          </p>
+          <p class="text-applly">{{item.time}} <span data-ng-hide="!item.success || appllyNote">.</span><a href="javascript:;" data-ng-hide="!item.success || appllyNote" data-ng-click="appllyNote=true">Solved</a></p>
+        </div>
+        <div class="clearfix"></div>
+        <div class="pp-item-set fix-note" data-ng-show="option" data-ng-click="option=flase">
+          <p class="right-option-item">
+            <a href="javascript:;">More detail</a>
+            <a href="javascript:;">Contact agent</a>
+          </p>
+        </div>
+    </div>
+  </div>
+  <div class="content-products tab2-detail" data-ng-show="viewTab===2">
+    <div class="item-inventory fix-height note" data-ng-class="{'last-child':$last}" data-ng-repeat="item in Notifications.listData" data-ng-show="item.Inquiry">
+        <div class="col-xs-12">
+          <p class="pin-status-item" data-ng-hide="!item.success || appllyNote">
+            <span class="arrow-pin"></span>
+            <i class="icon-page icon-time-scan" data-ng-click="viewTool=!viewTool; $event.stopPropagation()"></i>
+            <a href="javascript:;" class="text-tooltip" data-ng-show="viewTool">
+              <span data-ng-hide="item.success">Not sync yet</span>
+              <span data-ng-hide="!item.success">Successfully Sync</span>
+            </a>
+          </p>
+          <p class="name-inven" data-ng-click="goLink(15); viewDetail(item)">{{item.name}} <span class="news" data-ng-show="item.news">new</span><br>
+            <span class="icon-page icon-three-pie" data-ng-click="option=!option; $event.stopPropagation()"></span>
+            <span>By {{item.user}} .  Retailer Name</span><br>
+            <span data-read-more data-ng-model="item.textInquiry" data-words="true" data-length="14"></span>
+          </p>
+          <p class="text-applly">{{item.time}} <span data-ng-hide="!item.success || appllyNote">.</span><a href="javascript:;" data-ng-hide="!item.success || appllyNote" data-ng-click="appllyNote=true">Solved</a></p>
+        </div>
+        <div class="clearfix"></div>
+        <div class="pp-item-set fix-note" data-ng-show="option" data-ng-click="option=flase">
+          <p class="right-option-item">
+            <a href="javascript:;">More detail</a>
+            <a href="javascript:;">Contact agent</a>
+          </p>
+        </div>
+    </div>
+  </div>
+</article>

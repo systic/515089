@@ -1,0 +1,101 @@
+<header class="header-top" data-ng-class="{'content-push':showNav}">
+    <p class="text-header pull-left" data-ng-hide="searchOn">
+      <i class="icon-page icon-push" data-ng-click="pushMenu()"></i>My Inventory</p>
+    <p class="text-header pull-left" data-ng-show="searchOn">
+      <i class="icon-page icon-back" data-ng-click="searchProduct=null; searchOn=false"></i>Search Product</p>
+    <div class="pull-right right-option" data-ng-hide="showMove">
+      <a href="javascript:;" class="icon-page icon-option-w icon-filter" data-ng-click="goLink(9)"></a>
+      <a href="javascript:;" class="icon-page icon-option-w icon-soft" data-ng-click="showSoft=!showSoft; ppBTN=false"></a>
+      <a href="javascript:;" class="icon-page icon-option-w icon-views" data-ng-class="{'view-none-img':viewStyle}" data-ng-click="viewStyle=!viewStyle; showSoft=false"></a>
+    </div>
+</header>
+<article class="ct-scaning color" data-ng-class="{'edit-code':editCode}">
+  <div class="box-tabs item-tab three" data-ng-init="viewTab=1">
+    <a href="javascript:;" data-ng-class="{'active':viewTab===1}" data-ng-click="viewTab=1">All 
+      <span data-ng-show="searchOn">990</span></a>
+    <a href="javascript:;" data-ng-class="{'active':viewTab===2}" data-ng-click="viewTab=2">Stock 
+      <span data-ng-show="searchOn">450</span></a>
+    <a href="javascript:;" data-ng-class="{'active':viewTab===3}" data-ng-click="viewTab=3">Sold 
+      <span data-ng-show="searchOn">540</span></a>
+  </div>
+  <div class="group-search-product" data-ng-show="showSearch" data-ng-class="{'input-focus':changeText}">
+    <span class="icon-page icon-search" data-ng-click="searchFC()"></span>
+    <input type="text" placeholder="Search product" name="search product" data-ng-model="searchProduct" class="input-text-center" data-ng-focus="changeText=true">
+  </div>
+  <div class="content-products" data-ng-swipe-down="swipe()">
+    <p data-ng-show="searchOn" class="title-recent-search">Recent search <a href="javascript:;" data-ng-click="searchProduct=null; searchOn=false">Clear all</a></p>
+    <div class="item-inventory fix-height" data-ng-hide="viewStyle" data-ng-class="{'last-child':$last}" data-ng-repeat="item in MyInventory.listData">
+        <div class="col-xs-4">
+          <a href="javascript:;" class="img-thumb" data-ng-click="goLink(11); viewDetail(item)">
+            <img src="#" data-ng-src="{{item.img}}" alt="images product">
+          </a>
+        </div>
+        <div class="col-xs-8 no-padding">
+          <div class="col-xs-12 no-padding">
+            <p class="name-inven" data-ng-click="goLink(11); viewDetail(item)">{{item.name}}<br><span>#{{item.id}}</span><span class="icon-page icon-three-pie" data-ng-click="option=!option; $event.stopPropagation()"></span></p>
+          </div>
+          <div class="col-xs-12 no-padding">
+            <div class="col-xs-3 no-padding text-left" data-ng-hide="viewTab===3">
+                <p class="two-number-repeat fix-left">STOCK <br><span>{{item.stock}}</span></p>
+            </div>
+            <div class="col-xs-3" data-ng-hide="viewTab===2" data-ng-class="{'no-padding text-left':viewTab===3}">
+                <p class="two-number-repeat" data-ng-class="{'fix-left2':viewTab===3}">SOLD <br><span>{{item.sold}}</span></p>
+            </div>
+            <div class="col-xs-6">
+                <p class="two-number-repeat two" data-ng-hide="viewTab===2">POINTS <br><span>{{item.points}}</span></p>
+                <p class="two-number-repeat fix-span" data-ng-show="viewTab===2">LAST UPDATE<br><span>{{item.date}}</span></p>
+            </div>
+          </div>      
+        </div>
+        <div class="clearfix"></div>
+        <div class="pp-item-set" data-ng-show="option" data-ng-click="option=flase">
+          <p class="right-option-item">
+            <a href="javascript:;" data-ng-click="goLink(11); viewDetail(item)">More detail</a>
+            <a href="javascript:;">Contact agent</a>
+          </p>
+        </div>
+    </div>
+    <div class="item-inventory" data-ng-show="viewStyle" data-ng-class="{'last-child':$last}" data-ng-repeat="item in MyInventory.listData">
+        <div class="col-xs-7">
+            <p class="name-inven" data-ng-click="goLink(11); viewDetail(item)">{{item.name}}<br><span>#{{item.id}}</span></p>
+        </div>
+        <div class="col-xs-2">
+            <p class="two-number-repeat">SOLD <br><span>{{item.sold}}</span></p>
+        </div>
+        <div class="col-xs-3 fix-left-right">
+            <span class="icon-page icon-three-pie fix" data-ng-click="option=!option; $event.stopPropagation()"></span>
+            <p class="two-number-repeat two">POINTS <br><span>{{item.points}}</span></p>
+        </div>
+        <div class="clearfix"></div>
+        <div class="pp-item-set fix" data-ng-show="option" data-ng-click="option=flase">
+          <p class="right-option-item">
+            <a href="javascript:;" data-ng-click="goLink(11); viewDetail(item)">More detail</a>
+            <a href="javascript:;">Contact agent</a>
+          </p>
+        </div>
+    </div>
+  </div>
+  <div class="pin-total-left">
+    <span>TOTAL</span> 25,000
+  </div>
+  <p class="pin-add-right" data-ng-click="ppBTN=!ppBTN; showSoft=false"><span class="icon-page icon-add-text"></span></p>
+</article>
+<div class="pp-show" data-ng-show="showSoft" data-ng-click="showSoft=false">
+  <div class="pp-child two">
+    <p class="text-center"><span class="arrow-top"></span></p>
+    <div class="content-pp-child">
+        <p class="set-center-two" data-ng-click="soft=1" data-ng-class="{'color':soft===1}">Product name</p>
+        <p class="set-center-two" data-ng-click="soft=2" data-ng-class="{'color':soft===2}">Barcode ID</p>
+        <p class="set-center-two" data-ng-click="soft=3" data-ng-class="{'color':soft===3}">Date & time</p>
+        <p class="set-center-two" data-ng-click="soft=4" data-ng-class="{'color':soft===4}">Quantity</p>
+        <p class="set-center-two" data-ng-click="soft=5" data-ng-class="{'color':soft===5}">Points</p>
+    </div>
+  </div>
+</div>
+<div class="pp-show btn-pp" data-ng-show="ppBTN" data-ng-click="ppBTN=false">
+  <div class="btn-option-list">
+    <a href="javascript:;" data-ng-click="goLink(3)">Inquiry <span><i class="icon-page icon-pp-op icon-cmt-two"></i></span></a>
+    <a href="javascript:;">Inventory Analystic <span><i class="icon-page icon-pp-op icon-views"></i></span></a>
+    <a href="javascript:;" data-ng-click="goLink(8)">Scan Barcode <span><i class="icon-page icon-pp-op icon-scan"></i></span></a>
+  </div>
+</div>

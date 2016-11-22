@@ -1,0 +1,158 @@
+<header class="header-top" data-ng-class="{'content-push':showNav}">
+    <p class="text-header pull-left"><i class="icon-page icon-back" data-ng-click="goLink(13)"></i>Retailer Detail</p>
+    <p class="pull-right right-option">
+      <a href="javascript:;" class="icon-page icon-setting"></a>
+    </p>
+</header>
+<article class="ct-scaning color fix" data-ng-class="{'fix-swipe':showTime}">
+  <div class="box-tabs item-tab three" data-ng-init="viewTab=1">
+    <a href="javascript:;" data-ng-class="{'active':viewTab===1}" data-ng-click="viewTab=1">About</a>
+    <a href="javascript:;" data-ng-class="{'active':viewTab===2}" data-ng-click="viewTab=2">Inquiry (3)</a>
+    <a href="javascript:;" data-ng-class="{'active':viewTab===3}" data-ng-click="viewTab=3">Points</a>
+  </div>
+  <div class="content-products" data-ng-show="viewTab===1">
+    <div class="item-inventory auto-height">
+      <div class="row-fix-padding-left">
+        <div class="col-xs-9">
+            <a href="javascript:;" class="avatar-member">
+                <img src="#" data-ng-src="{{bindMember.avatar}}" alt="avatar member">
+            </a>
+            <p class="pull-left text-right-member">
+                <a href="javascript:;">{{bindMember.user}}</a><br>Retail Name
+            </p>
+        </div>
+        <div class="col-xs-3 text-right"><span class="icon-page icon-gold"></span></div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="set-center-pad">
+        <div class="ct-number-detail">
+          <div class="col-xs-4">
+            <p class="two-number-repeat">stock <br><span>{{bindMember.stock}}</span></p>
+          </div>
+          <div class="col-xs-4 set-left-right-border">
+            <p class="two-number-repeat">SOLD <br><span>{{bindMember.sold}}</span></p>
+          </div>
+          <div class="col-xs-4">
+            <p class="two-number-repeat two small-text">POINTS <br><span>{{bindMember.points | currency:"":0}}</span></p>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <p class="row-about-user">
+        <span class="span-left-pin">Join on<i>:</i></span>
+        <span class="span-right-bind">{{bindMember.date}}</span>
+      </p>
+      <p class="row-about-user">
+        <span class="span-left-pin">Retailer ID:<i>:</i></span>
+        <span class="span-right-bind">#{{bindMember.id}}</span>
+      </p>
+      <p class="row-about-user">
+        <span class="span-left-pin">Location<i>:</i></span>
+        <span class="span-right-bind">Lorem Ipsum Street 99 New York, USA</span>
+      </p>
+      <p class="row-about-user">
+        <span class="span-left-pin">Phone<i>:</i></span>
+        <span class="span-right-bind color">(+62) 8170 310 5557</span>
+      </p>
+      <p class="row-about-user">
+        <span class="span-left-pin">Email<i>:</i></span>
+        <span class="span-right-bind color">janedoe@xample.com</span>
+      </p>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="content-products tab2-detail" data-ng-show="viewTab===2">
+    <div class="item-inventory fix-height" data-ng-class="{'last-child':$last}" data-ng-repeat="item in MyRetailers.listData" data-ng-show="item.Inquiry">
+        <div class="col-xs-12">
+          <p class="pin-status-item" data-ng-hide="!item.success || appllyNote">
+            <span class="arrow-pin"></span>
+            <i class="icon-page icon-time-scan" data-ng-click="viewTool=!viewTool; $event.stopPropagation()"></i>
+            <a href="javascript:;" class="text-tooltip" data-ng-show="viewTool">
+              <span data-ng-hide="item.success">Not sync yet</span>
+              <span data-ng-hide="!item.success">Successfully Sync</span>
+            </a>
+          </p>
+          <p class="name-inven" data-ng-click="goLink(15); viewDetail(item)">{{item.name}}<br>
+            <span data-read-more data-ng-model="item.textInquiry" data-words="true" data-length="14"></span>
+            <span class="icon-page icon-three-pie" data-ng-click="option=!option; $event.stopPropagation()"></span>
+          </p>
+          <p class="text-applly">{{item.time}} <span data-ng-hide="!item.success || appllyNote">.</span><a href="javascript:;" data-ng-hide="!item.success || appllyNote" data-ng-click="appllyNote=true">Solved</a></p>
+        </div>
+        <div class="clearfix"></div>
+        <div class="pp-item-set" data-ng-show="option" data-ng-click="option=flase">
+          <p class="right-option-item">
+            <a href="javascript:;">More detail</a>
+            <a href="javascript:;">Contact agent</a>
+          </p>
+        </div>
+    </div>
+  </div>
+  <div class="content-products" data-ng-show="viewTab===3">
+    <div class="box-chart-detail">
+      <div class="top-box">
+          <p class="tottal-top-box pull-left">
+            TOTAL 
+            <span data-ng-hide="viewChart==='Sold quantity'">{{bindMember.points | currency:"":0}}</span>
+            <span class="color" data-ng-show="viewChart==='Sold quantity'">{{bindMember.points - 500 | currency:"":0}}</span>
+          </p>
+          <div class="pull-right rigght-option-box" data-ng-class="{'fix':showMove}" data-ng-init="viewChart='Points'">
+              <p data-ng-hide="showMove" data-ng-click="chartType=!chartType">
+                  {{viewChart}}
+                  <span class="icon-page icon-arrow-bottom" data-ng-class="{'rotate':chartType}"></span>
+              </p>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+      <div class="content-show-more" data-ng-init="view='week'">
+          <div class="box-chart" data-ng-show="viewChart==='Points'">
+              <canvas class="chart" data-draw-chart="" data-chart-label="labelChartWeek" data-chart-value="dataChartWeek" data-ng-show="view==='week'"></canvas>
+              <canvas class="chart" data-draw-chart="" data-chart-label="labelChart" data-chart-value="dataChart" data-ng-show="view==='month'"></canvas>
+              <div class="set-hr"><div class="set-line"></div></div>
+          </div>
+          <div class="box-chart" data-ng-show="viewChart==='Sold quantity'">
+              <canvas class="chart" data-draw-chart-two="" data-chart-label="labelChartWeek" data-chart-value="dataChartWeek" data-ng-show="view==='week'"></canvas>
+              <canvas class="chart" data-draw-chart-two="" data-chart-label="labelChart" data-chart-value="dataChart" data-ng-show="view==='month'"></canvas>
+              <div class="set-hr"><div class="set-line"></div></div>
+          </div>
+          <div>
+              <p class="col-xs-6 text-month-week"><span data-ng-hide="view==='month'">September 8, </span>2016</p>
+              <p class="col-xs-6 view-chart">
+                  <span data-ng-class="{'active':view==='week'}" data-ng-click="view='week'">Weekly</span>
+                  <i>.</i>   
+                  <span data-ng-class="{'active':view==='month'}" data-ng-click="view='month'">Monthly</span>
+              </p>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="pp-item-set fix box-height" data-ng-show="chartType" data-ng-click="chartType=false">
+          <p class="right-option-item option">
+              <a href="javascript:;" data-ng-class="{'active':viewChart==='Points'}" data-ng-click="viewChart='Points'">Points</a>
+              <a href="javascript:;" data-ng-class="{'active':viewChart==='Sold quantity'}" data-ng-click="viewChart='Sold quantity'">Sold quantity</a>
+          </p>
+      </div>
+    </div>
+    <div class="item-inventory" data-ng-class="{'view-swipe':itemTime}" data-ng-repeat="item in MyRetailers.listData" data-ng-swipe-right="itemTime=true; swipeFC()" data-ng-swipe-left="itemTime=false; swipeFC()">
+        <div class="box-time-swipe" data-ng-show="itemTime">
+          {{item.timeRank}}<br>{{item.timeType}}
+        </div>
+        <div class="col-xs-7">
+            <p class="name-inven" data-ng-click="goLink(15); viewDetail(item)">{{item.name}}<br><span>#{{item.id}}</span></p>
+        </div>
+        <div class="col-xs-2">
+            <p class="two-number-repeat">SOLD <br><span>{{item.sold}}</span></p>
+        </div>
+        <div class="col-xs-3 fix-left-right">
+            <span class="icon-page icon-three-pie fix" data-ng-click="option=!option; $event.stopPropagation()"></span>
+            <p class="two-number-repeat two">POINTS <br><span>300</span></p>
+        </div>
+        <div class="clearfix"></div>
+        <div class="pp-item-set fix" data-ng-show="option" data-ng-click="option=flase">
+          <p class="right-option-item">
+            <a href="javascript:;" data-ng-click="goLink(15)">More detail</a>
+            <a href="javascript:;">Contact agent</a>
+          </p>
+        </div>
+    </div>
+  </div>
+</article>
